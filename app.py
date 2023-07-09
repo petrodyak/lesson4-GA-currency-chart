@@ -30,7 +30,7 @@ def send_event(currency_name, currency_rate,):
 for rate in exchange_data:
     currency_name = rate['cc']
     if currency_name in ('USD', 'EUR', 'PLN'):
-        currency_rate = rate['rate']
+        currency_rate = int(Decimal(rate['rate'])*10000) # convert into int due to Pygamp convert into int automatically 
         print(currency_name, ':', currency_rate)
         if currency_rate is None:
             # Handle error if exchange rate not found
